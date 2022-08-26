@@ -22,14 +22,20 @@ window.onload = function handleFormSubmission() {
   let form = document.querySelector("form");
   form.onsubmit = function(event) {
     event.preventDefault();
-    let array = [];
-    let newArray = array.push(inputtedTopping);
-    let newPizza = new Pizza(inputtedTopping, inputtedSize);
-    let inputtedTopping = document.querySelector('input[name="topping"]:checked').value;
-    let inputtedSize = document.querySelector('input[name="size"]:checked').value;
 
-    console.log(newPizza)
-    price(newPizza);
+    
+    let inputtedToppings = document.querySelectorAll('input[name="topping"]:checked');
+    console.log(inputtedToppings)
+    let inputtedSize = document.querySelector('input[name="size"]:checked').value;
+    let array = []
+    for (let i = 0; i < inputtedToppings.length; i++) {
+      array.push(inputtedToppings[i].value)
+    }
+
+    let myPizza = new Pizza(array, inputtedSize);
+    
+    console.log(myPizza)
+    price(myPizza);
 
     form.addEventListener("submit", handleFormSubmission); {
     document.querySelector("#pizza-price").removeAttribute("class");

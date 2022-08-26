@@ -19,3 +19,12 @@ Test: "it should accept user selections to calculate price."
 Code:
 test = "cheese", "personal"
 Expected Output: $10
+
+Description: array []
+
+Test: "It should take all toppings selected and push them into an an array."
+Code:
+array = []
+newArray = array.push(inputtedTopping)
+
+Expected Output: ["cheese", "sausage", "mushroom"]
