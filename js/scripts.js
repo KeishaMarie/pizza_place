@@ -4,17 +4,19 @@ function Pizza(topping, size) {
   this.size = size;
 }
 
-function price(fixins) {
-  const topping = fixins.topping;
-  const size = fixins.size;
-  let price = 30;
-  if (topping === "cheese" && "sausage" && "mushroom" && size === "large") {
-    price === 30
-} if ( topping === "cheese" && "sausage" && "mushroom" && size === "personal") {
-    price -= 10
-} if (topping === "cheese" && size === "personal") {
-    price -= 20 
-}
+Pizza.prototype.price = function () {
+  let price = 0;
+  if (this.size === "large") {
+    price += 10
+  } if (this.size === "personal") {
+    price += 5
+  } if (this.topping.includes("cheese")) {
+    price +=2
+  } if (this.topping.includes("sausage")) {
+    price += 3
+  } if (this.topping.includes("mushroom")) {
+    price += 30
+  } return price
 }
 
 window.onload = function () {
@@ -25,20 +27,23 @@ window.onload = function () {
     let inputtedToppings = document.querySelectorAll('input[name="topping"]:checked');
     console.log(inputtedToppings)
     let inputtedSize = document.querySelector('input[name="size"]:checked').value;
-    let array = []
+    console.log(inputtedSize)
+    let toppingArray = []
     for (let i = 0; i < inputtedToppings.length; i++) {
-      array.push(inputtedToppings[i].value)
+      toppingArray.push(inputtedToppings[i].value)
     }
 
-    let myPizza = new Pizza(array, inputtedSize);
+    let myPizza = new Pizza(toppingArray, inputtedSize);
+
     console.log(myPizza)
-    document.getElementById("pizzaPrice").innerText = price(myPizza);
-    console.log(price(myPizza));
+    console.log(myPizza.price())
+    document.getElementById("pizzaPrice").innerText = myPizza.price();
+    console.log(myPizza.price());
   }; 
 };
  
 window.addEventListener("load", function() {
   const form = document.getElementById("pizza-selections")
-  form.addEventListener("submit", price)
+  form.addEventListener("submit", Pizza.price)
   document.querySelector("#pizza-price").removeAttribute("class");
 });
