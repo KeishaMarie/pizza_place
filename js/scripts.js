@@ -1,18 +1,18 @@
 
-function Pizza(toppings, size) {
-  this.toppings = toppings;
+function Pizza(topping, size) {
+  this.topping = topping;
   this.size = size;
 }
 
 function price(fixins) {
-  const toppings = fixins.toppings;
+  const topping = fixins.topping;
   const size = fixins.size;
   let price = 30;
-  if (toppings === "cheese" && "sausage" && "mushroom" && size === "large") {
+  if (topping === "cheese" && "sausage" && "mushroom" && size === "large") {
     price === 30
-} if ( toppings === "cheese" && "sausage" && "mushroom" && size === "personal") {
+} if ( topping === "cheese" && "sausage" && "mushroom" && size === "personal") {
     price -= 10
-} if (toppings === "cheese" && size === "personal") {
+} if (topping === "cheese" && size === "personal") {
     price -= 20
   console.log("priceIsRight")  
 }
