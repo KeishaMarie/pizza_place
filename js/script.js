@@ -28,9 +28,11 @@ window.onload = function handleFormSubmission() {
     let newPizza = new Pizza(inputtedTopping, inputtedSize);
     console.log(newPizza)
     price(newPizza);
-
-    form.addEventListener("submit", handleFormSubmission); {
     document.querySelector("#pizza-price").removeAttribute("class");
 }; 
   };
-  };
+
+window.addEventListener("load", function () {
+  let form = document.querySelector("form");
+  form.addEventListener("submit", handleFormSubmission);
+});
