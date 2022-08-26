@@ -13,17 +13,15 @@ function price(fixins) {
 } if ( topping === "cheese" && "sausage" && "mushroom" && size === "personal") {
     price -= 10
 } if (topping === "cheese" && size === "personal") {
-    price -= 20
-  console.log("priceIsRight")  
+    price -= 20 
 }
 }
 
-window.onload = function handleFormSubmission() {
+window.onload = function () {
   let form = document.querySelector("form");
   form.onsubmit = function(event) {
     event.preventDefault();
 
-    
     let inputtedToppings = document.querySelectorAll('input[name="topping"]:checked');
     console.log(inputtedToppings)
     let inputtedSize = document.querySelector('input[name="size"]:checked').value;
@@ -33,12 +31,14 @@ window.onload = function handleFormSubmission() {
     }
 
     let myPizza = new Pizza(array, inputtedSize);
-    
     console.log(myPizza)
-    price(myPizza);
-
-    form.addEventListener("submit", handleFormSubmission); {
-    document.querySelector("#pizza-price").removeAttribute("class");
-}; 
-  };
-  };
+    document.getElementById("pizzaPrice").innerText = price(myPizza);
+    console.log(price(myPizza));
+  }; 
+};
+ 
+window.addEventListener("load", function() {
+  const form = document.getElementById("pizza-selections")
+  form.addEventListener("submit", price)
+  document.querySelector("#pizza-price").removeAttribute("class");
+});
