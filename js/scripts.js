@@ -22,10 +22,12 @@ window.onload = function handleFormSubmission() {
   let form = document.querySelector("form");
   form.onsubmit = function(event) {
     event.preventDefault();
-    const inputtedTopping = document.querySelector('input[name="topping"]:checked').value;
-    const inputtedSize = document.querySelector('input[name="size"]:checked').value;
-    console.log(inputtedTopping, inputtedSize);
+    let array = [];
+    let newArray = array.push(inputtedTopping);
     let newPizza = new Pizza(inputtedTopping, inputtedSize);
+    let inputtedTopping = document.querySelector('input[name="topping"]:checked').value;
+    let inputtedSize = document.querySelector('input[name="size"]:checked').value;
+
     console.log(newPizza)
     price(newPizza);
 
